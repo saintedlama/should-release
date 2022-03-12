@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const verbose = process.argv.includes("-v");
+
 const conventionalRecommendedBump = require("conventional-recommended-bump");
 
 function whatBump(commits) {
@@ -9,6 +11,10 @@ function whatBump(commits) {
   let patch = 0;
 
   commits.forEach((commit) => {
+    if (verbose) {
+      console.log(commit);
+    }
+
     if (commit.notes.length > 0) {
       shouldRelease = true;
       major++;
