@@ -1,0 +1,31 @@
+{
+  "name": "should-release",
+  "version": "1.0.0",
+  "description": "Minimalistic command line tool to check if a new release should to be published",
+  "bin": "cli.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "standard-version"
+  },
+  "keywords": [
+    "semver",
+    "release",
+    "version",
+    "versioning"
+  ],
+  "main": "index.js",
+  "repository": "saintedlama/should-release",
+  "author": "Christoph Walcher <christoph.walcher@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "conventional-recommended-bump": "^6.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "standard-version": "^9.3.2"
+  }
+}
