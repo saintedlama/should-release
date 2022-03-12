@@ -1,6 +1,6 @@
 {
   "name": "should-release",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Minimalistic command line tool to check if a new release should to be published",
   "bin": "cli.js",
   "scripts": {
