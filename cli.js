@@ -1,8 +1,20 @@
 #!/usr/bin/env node
 
-const verbose = process.argv.includes("-v");
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 
-const conventionalRecommendedBump = require("conventional-recommended-bump");
+import conventionalRecommendedBump from "conventional-recommended-bump";
+
+const args = yargs(hideBin(process.argv))
+  .option('verbose', {
+    alias: 'v',
+    type: 'boolean',
+    description: 'Run with verbose logging'
+  })
+  .help()
+  .parse();
+
+const verbose = args.verbose;
 
 function whatBump(commits) {
   let shouldRelease = false;
@@ -10,9 +22,14 @@ function whatBump(commits) {
   let minor = 0;
   let patch = 0;
 
+  if (verbose) {
+    console.log(`analyzing ${commits.length} commits...`);
+  }
+
   commits.forEach((commit) => {
+
     if (verbose) {
-      console.log(commit);
+      console.log(`commit ${commit.hash}: ${commit.subject} (type: ${commit.type}, notes: ${commit.notes.length})`);
     }
 
     if (commit.notes.length > 0) {
@@ -35,7 +52,7 @@ function whatBump(commits) {
   };
 }
 
-conventionalRecommendedBump({ whatBump }, { verbose: true }, function (err, data) {
+conventionalRecommendedBump({ whatBump }, { verbose }, function (err, data) {
   if (err) {
     console.error(err.toString());
     process.exit(1);
