@@ -35,10 +35,10 @@ function whatBump(commits) {
     if (commit.notes.length > 0) {
       shouldRelease = true;
       major++;
-    } else if (commit.type === "feat") {
+    } else if (commit.type === "feat" || "perf") {
       shouldRelease = true;
       minor++;
-    } else if (commit.type === "fix") {
+    } else if (commit.type === "build" ||  "chore" || "ci" || "docs" || "fix" || "style" || "refactor" || "test") {
       shouldRelease = true;
       patch++;
     }
