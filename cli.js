@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-import yargs from 'yargs'
-import { hideBin } from 'yargs/helpers'
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
 import conventionalRecommendedBump from "conventional-recommended-bump";
 
 const args = yargs(hideBin(process.argv))
-  .option('verbose', {
-    alias: 'v',
-    type: 'boolean',
-    description: 'Run with verbose logging'
+  .option("verbose", {
+    alias: "v",
+    type: "boolean",
+    description: "Run with verbose logging",
   })
   .help()
   .parse();
@@ -27,7 +27,6 @@ function whatBump(commits) {
   }
 
   commits.forEach((commit) => {
-
     if (verbose) {
       console.log(`commit ${commit.hash}: ${commit.subject} (type: ${commit.type}, notes: ${commit.notes.length})`);
     }
