@@ -37,7 +37,7 @@ function whatBump(commits) {
     } else if (commit.type === "feat" || "perf") {
       shouldRelease = true;
       minor++;
-    } else if (commit.type === "build" ||  "chore" || "ci" || "docs" || "fix" || "style" || "refactor" || "test") {
+    } else if (commit.type === "build" || "chore" || "ci" || "docs" || "fix" || "style" || "refactor" || "test") {
       shouldRelease = true;
       patch++;
     }
