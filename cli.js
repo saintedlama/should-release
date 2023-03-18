@@ -34,6 +34,7 @@ function whatBump(commits) {
     if (commit.notes.length > 0) {
       shouldRelease = true;
       major++;
+      /* eslint-disable-next-line no-constant-condition*/
     } else if (commit.type === "feat" || "perf") {
       shouldRelease = true;
       minor++;
