@@ -27,11 +27,16 @@ function whatBump(commits) {
   }
 
   commits.forEach((commit) => {
+    const breakingHeaderPattern = /^(\w*)(?:\((.*)\))?!: (.*)$/;
+    const breakingHeader = breakingHeaderPattern.test(commit.header);
+
     if (verbose) {
-      console.log(`commit ${commit.hash}: ${commit.subject} (type: ${commit.type}, notes: ${commit.notes.length})`);
+      console.log(
+        `commit ${commit.hash}: ${commit.subject} (type: ${commit.type}, notes: ${commit.notes.length}, breakingHeader: ${breakingHeader})`
+      );
     }
 
-    if (commit.notes.length > 0) {
+    if (commit.notes.length > 0 || breakingHeader) {
       shouldRelease = true;
       major++;
       /* eslint-disable-next-line no-constant-condition*/
